@@ -1,5 +1,7 @@
 USE db_biblioteca;
 
+SET @@autocommit = ON;
+
 SELECT * FROM autores;
 SELECT * FROM livros;
 SELECT * FROM membros;
@@ -23,8 +25,5 @@ INSERT INTO membros VALUES
 INSERT INTO emprestimos VALUES
 ('1', '1', '2', '2024-05-15', '2024-06-05'),
 ('2', '2', '1', '2024-06-07', '2024-07-07'),
-('3', '3', '3', '2024-09-10', '2024-10-10');
-
-INSERT INTO emprestimos VALUES
+('3', '3', '3', '2024-09-10', '2024-10-10'),
 ('4', '3', '2', '2024-09-15', '2024-10-15');
-
