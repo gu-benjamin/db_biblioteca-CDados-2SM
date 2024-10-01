@@ -33,12 +33,12 @@ WHERE ano_publicacao > (SELECT AVG(ano_publicacao) FROM livros));
 
 -- b. Encontre os membros que realizaram mais de um empréstimo.
 SELECT * FROM membros WHERE id_membro IN (SELECT id_membro FROM emprestimos 
-GROUP BY id_membro HAVING COUNT(id_emprestimo) > 1);
+GROUP BY id_membro HAVING COUNT(id_membro) > 1);
 
 -- c. Liste os livros que foram emprestados ao menos uma vez.
 SELECT * FROM livros WHERE id_livro IN (SELECT id_livro FROM emprestimos 
-GROUP BY id_livro HAVING COUNT(id_emprestimo) > 1);
+GROUP BY id_livro HAVING COUNT(id_livro) > 1);
 
 -- d. Consulte os livros que ainda não foram emprestados.
 SELECT * FROM livros WHERE id_livro IN (SELECT id_livro FROM emprestimos 
-GROUP BY id_livro HAVING COUNT(id_emprestimo) < 1);
+GROUP BY id_livro HAVING COUNT(id_livro) < 1);
