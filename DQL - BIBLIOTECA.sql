@@ -40,5 +40,5 @@ SELECT * FROM livros WHERE id_livro IN (SELECT id_livro FROM emprestimos
 GROUP BY id_livro HAVING COUNT(id_livro) > 1);
 
 -- d. Consulte os livros que ainda não foram emprestados.
-SELECT * FROM livros WHERE id_livro IN (SELECT id_livro FROM emprestimos 
-GROUP BY id_livro HAVING COUNT(id_livro) < 1);
+SELECT * FROM livros WHERE id_livro NOT IN (SELECT id_livro FROM emprestimos 
+GROUP BY id_livro HAVING COUNT(id_livro) >= 1);
