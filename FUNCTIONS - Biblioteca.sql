@@ -70,7 +70,7 @@ READS SQL DATA
 BEGIN
 DECLARE media DECIMAL(10,2);
 
-SELECT AVG(TIMESTAMPDIFF(YEAR, data_emprestimo, data_devolucao)) INTO media FROM emprestimos
+SELECT AVG(TIMESTAMPDIFF(DAY, data_emprestimo, data_devolucao)) INTO media FROM emprestimos
 WHERE id_livro = id_L;
 
 RETURN media;
