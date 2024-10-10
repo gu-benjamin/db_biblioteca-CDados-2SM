@@ -64,18 +64,18 @@ SELECT totalEmprestimosPeriodo('2024-09-01', '2024-10-31') AS 'Emprestimos entre
 -- Exercicio 4. Crie uma função que retorna a média de dias em que os livros
 -- foram emprestados.
 DELIMITER $$
-CREATE FUNCTION mediaDiasLivros(id_L INT)
+CREATE FUNCTION mediaDiasLivros()
 RETURNS DECIMAL(10,2)
 READS SQL DATA
 BEGIN
 DECLARE media DECIMAL(10,2);
 
 SELECT AVG(TIMESTAMPDIFF(DAY, data_emprestimo, data_devolucao)) INTO media FROM emprestimos
-WHERE id_livro = id_L;
+WHERE data_devolucao IS NOT NULL;
 
 RETURN media;
 
 END $$
 DELIMITER ;
 
-SELECT titulo, mediaDiasLivros(id_livro) AS 'Média de dias emprestado' FROM livros;
+SELECT mediaDiasLivros() AS 'Média de dias emprestado';
